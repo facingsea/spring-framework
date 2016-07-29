@@ -16,32 +16,32 @@
 
 	<!-- 配置module -->
 	<modules>
-		<module>../spring-core</module>
+		<module>spring-core</module>
 		<module>spring-cglib-repack</module>
-    <module>spring-asm-repack</module>
-    <module>spring-beans</module>
-    <module>spring-expression</module>
-    <module>spring-aop</module>
-    <module>spring-instrument</module>
-    <module>spring-instrument-tomcat</module>
-    <module>spring-context</module>
-    <module>spring-framework-bom</module>
-    <module>spring-oxm</module>
-    <module>spring-oxm-test</module>
-    <module>spring-tx</module>
-    <module>spring-jdbc</module>
-    <module>spring-context-support</module>
-    <module>spring-jms</module>
-    <module>spring-web</module>
-    <module>spring-orm</module>
-    <module>spring-orm-hibernate4</module>
-    <module>spring-webmvc</module>
-    <module>spring-webmvc-tiles3</module>
-    <module>spring-webmvc-portlet</module>
-    <module>spring-test</module>
-    <module>spring-test-mvc</module>
-    <module>spring-struts</module>
-  </modules>
+	    <module>spring-asm-repack</module>
+	    <module>spring-beans</module>
+	    <module>spring-expression</module>
+	    <module>spring-aop</module>
+	    <module>spring-instrument</module>
+	    <module>spring-instrument-tomcat</module>
+	    <module>spring-context</module>
+	    <module>spring-framework-bom</module>
+	    <module>spring-oxm</module>
+	    <module>spring-oxm-test</module>
+	    <module>spring-tx</module>
+	    <module>spring-jdbc</module>
+	    <module>spring-context-support</module>
+	    <module>spring-jms</module>
+	    <module>spring-web</module>
+	    <module>spring-orm</module>
+	    <module>spring-orm-hibernate4</module>
+	    <module>spring-webmvc</module>
+	    <module>spring-webmvc-tiles3</module>
+	    <module>spring-webmvc-portlet</module>
+	    <module>spring-test</module>
+	    <module>spring-test-mvc</module>
+	    <module>spring-struts</module>
+	  </modules>
 
 	<build>
 		<finalName>parent</finalName>
