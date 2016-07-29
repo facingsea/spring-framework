@@ -1,2 +1,2 @@
 ## spring-framework
-来源于：[spring-framework](https://github.com/spring-projects/spring-framework)，对应版本`v3.2.6.RELEASE`
+鏉ユ簮浜庯細[spring-framework](https://github.com/spring-projects/spring-framework)锛屽搴旂増鏈琡v3.2.6.RELEASE`
