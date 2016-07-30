@@ -16,7 +16,8 @@
 	</properties>
 	
 	<!-- 添加此repo用于下载 jasperreports -->
-	<repositories>
+	<!-- cannot work in idea, but worked fine in eclipse -->
+	<!--<repositories>
 	    <repository>
 	        <id>jasperreports</id>
 	        <url>http://jasperreports.sourceforge.net/maven2</url>
@@ -25,7 +26,11 @@
 	        <id>jaspersoft-third-party</id>
 	        <url>http://jaspersoft.artifactoryonline.com/jaspersoft/third-party-ce-artifacts/</url>
 	    </repository>
-	</repositories>
+		<repository>
+			<id>jboss-public-repository-group</id>
+			<url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+		</repository>
+	</repositories>-->
 	
 	<dependencies>
 		<dependency>
@@ -40,7 +45,13 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
 			<version>3.2.6</version>
-			
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>3.2.6</version>
+			<type>test-jar</type>
+			<scope>test</scope>
 		</dependency>
 		<!-- spring beans -->
 		<dependency>
@@ -53,6 +64,13 @@
 					<artifactId>*</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>3.2.6</version>
+			<type>test-jar</type>
+			<scope>test</scope>
 		</dependency>
 		<!-- spring aop -->
 		<dependency>
@@ -112,6 +130,13 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
 			<version>3.2.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>3.2.6</version>
+			<type>test-jar</type>
+			<scope>test</scope>
 		</dependency>
 		<!-- spring expression -->
 		<dependency>
@@ -201,7 +226,7 @@
 		</dependency>
 		
 		<!-- 这个会影响其他jar的下载 -->
-		<dependency>
+		<!--<dependency>
 		    <groupId>net.sf.jasperreports</groupId>
 		    <artifactId>jasperreports</artifactId>
 		    <version>5.0.1</version>
@@ -211,7 +236,7 @@
 					<artifactId>xml-apis</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>
+		</dependency>-->
 		<dependency>
 			<groupId>rome</groupId>
 			<artifactId>rome</artifactId>
