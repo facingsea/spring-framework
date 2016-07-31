@@ -64,6 +64,8 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-oxm-test</artifactId>
 			<version>3.2.6</version>
+			<type>test-jar</type>
+			<scope>test</scope>
 		</dependency>
 		
 		<dependency>

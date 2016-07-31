@@ -61,7 +61,13 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
 			<version>3.2.6</version>
-			
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>3.2.6</version>
+			<type>test-jar</type>
+			<scope>test</scope>
 		</dependency>
 		<!-- spring beans -->
 		<dependency>
@@ -75,6 +81,13 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>3.2.6</version>
+			<type>test-jar</type>
+			<scope>test</scope>
+		</dependency>
 		<!-- spring aop -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -86,6 +99,13 @@
 					<artifactId>*</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>3.2.6</version>
+			<type>test-jar</type>
+			<scope>test</scope>
 		</dependency>
 		
 		
