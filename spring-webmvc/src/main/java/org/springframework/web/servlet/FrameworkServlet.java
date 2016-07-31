@@ -117,6 +117,45 @@ import org.springframework.web.util.WebUtils;
  * 3.0+ environments, which support programmatic registration of servlet instances. See
  * {@link #FrameworkServlet(WebApplicationContext)} Javadoc for details.
  *
+ * <p>Spring web框架基本的servlet。基于JavaBean的整体解决方案，来提供与Spring application context的集成。</p>
+ * <p>该类提供以下功能：</p>
+ * <ul>
+ *     <li>管理每个servlet的{@link org.springframework.web.context.WebApplicationContext
+ * WebApplicationContext}实例。该servlet的配置信息取决于在该servlet名称空间下的beans。</li>
+ *	   <li>无论一个请求是否成功处理，都会发布请求处理事件。</li>
+ * </ul>
+ *
+ * <p>子类必须实现{@link #doService}来处理请求。因为该类继承自{@link HttpServletBean}，而不是直接继承
+ * HttpServlet，所以bean属性会自动映射。子类可以实现{@link #initFrameworkServlet()}方法去自定义初始化操作。</p>
+ *
+ * <p>检测servlet中init-param配置的contextClass参数，如果没有找到，将会使用默认的
+ * {@link org.springframework.web.context.support.XmlWebApplicationContext
+ * XmlWebApplicationContext}。注意，对于默认的{@code FrameworkServlet}，一个自定义的context class
+ * 需要实现{@link org.springframework.web.context.ConfigurableWebApplicationContext
+ * ConfigurableWebApplicationContext}的SPI(Single Program Initiation：单个程序启动)。</p>
+ *
+ * <p>接受一个"contextInitializerClasses"的servlet init-param配置参数去指定{@link org.springframework.context.ApplicationContextInitializer
+ * ApplicationContextInitializer}的类。被管理的web application context将会赋值给这些initializers，
+ * 并允许额外的编程式配置，例如：添加属性来源或激活{@linkplain
+ * org.springframework.context.ConfigurableApplicationContext#getEnvironment() context's
+ * environment}的配置文件。参考{@link org.springframework.web.context.ContextLoader}，他支持
+ * 跟"root" web application context具有相同语义的"contextInitializerClasses" context-param。</p>
+ *
+ * <p>将servlet init-param中配置的"contextConfigLocation"传给该context的实例，并把它解析成可以被任意
+ * 逗号和空格数隔开的可能的文件路径，例如："test-servlet.xml, myServlet.xml". 如果没有明确的指定，该context
+ * 的实现将根据该servlet的名称空间去创建一个默认的位置。</p>
+ *
+ * <p>注意：当使用Spring的默认的ApplicationContext实现时，如果配置了多个config位置，后面文件中bean定义将会覆盖之前已加载
+ * 文件中相同bean定义。利用这种方式，可以通过一个额外的xml文件来故意覆盖某些bean定义。</p>
+ *
+ * <p>默认的名称空间是"'servlet-name'-servlet"，例如："test-servlet"表示servlet-name为"test"（对于
+ * 默认的的XmlWebApplicationContext来说，默认地址是"/WEB-INF/test-servlet.xml"），该名称空间可以通过
+ * "namespace" servlet init-param 来显示设置。</p>
+ *
+ * <p>从Spring 3.1起，{@code FrameworkServlet}将会被注入到web application context中，而不是内部自己创建。
+ * 这对于支持编程式注册servlet实例的Servlet 3.0+环境是非常有用的。
+ * 详细信息请参考{@link #FrameworkServlet(WebApplicationContext)}文档。</p>
+ *
  * @author Rod Johnson
  * @author Juergen Hoeller
  * @author Sam Brannen
@@ -135,6 +174,9 @@ public abstract class FrameworkServlet extends HttpServletBean {
 	 * Suffix for WebApplicationContext namespaces. If a servlet of this class is
 	 * given the name "test" in a context, the namespace used by the servlet will
 	 * resolve to "test-servlet".
+	 *
+	 * <p>WebApplicationContext名称空间的后缀。在context中，如果该类的一个servlet名称为"test"，
+	 * 那么该servlet的名称空间将会解析为"test-servlet"</p>
 	 */
 	public static final String DEFAULT_NAMESPACE_SUFFIX = "-servlet";
 
@@ -147,12 +189,16 @@ public abstract class FrameworkServlet extends HttpServletBean {
 	/**
 	 * Prefix for the ServletContext attribute for the WebApplicationContext.
 	 * The completion is the servlet name.
+	 *
+	 * <p>WebApplicationContext中ServletContext属性的前缀。完整名是该servlet的名称。</p>
 	 */
 	public static final String SERVLET_CONTEXT_PREFIX = FrameworkServlet.class.getName() + ".CONTEXT.";
 
 	/**
 	 * Any number of these characters are considered delimiters between
 	 * multiple values in a single init-param String value.
+	 *
+	 * <p>任意数量的这些字符将会被当做单个init-param字符串值的分隔符。</p>
 	 */
 	private static final String INIT_PARAM_DELIMITERS = ",; \t\n";
 
