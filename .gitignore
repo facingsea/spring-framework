@@ -13,4 +13,6 @@
 
 # Maven
 log/
-target/
+
+# it will ignore org.springframework.aop.target.* directory
+# target/
