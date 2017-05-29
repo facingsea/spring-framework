@@ -60,7 +60,7 @@ public class TestPropertySourceUtilsTests {
 	@Test
 	public void emptyAnnotation() {
 		expectedException.expect(IllegalStateException.class);
-		expectedException.expectMessage(startsWith("Could not detect default properties file for test"));
+		expectedException.expectMessage(org.hamcrest.CoreMatchers.startsWith("Could not detect default properties file for test"));
 		expectedException.expectMessage(containsString("EmptyPropertySources.properties"));
 		buildMergedTestPropertySources(EmptyPropertySources.class);
 	}
@@ -68,7 +68,7 @@ public class TestPropertySourceUtilsTests {
 	@Test
 	public void extendedEmptyAnnotation() {
 		expectedException.expect(IllegalStateException.class);
-		expectedException.expectMessage(startsWith("Could not detect default properties file for test"));
+		expectedException.expectMessage(org.hamcrest.CoreMatchers.startsWith("Could not detect default properties file for test"));
 		expectedException.expectMessage(containsString("ExtendedEmptyPropertySources.properties"));
 		buildMergedTestPropertySources(ExtendedEmptyPropertySources.class);
 	}
